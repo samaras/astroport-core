@@ -24,17 +24,14 @@ RUN cargo build --release
 FROM debian:buster-slim
 
 # copy the build artifact from the build stage
-COPY --from=build /holodeck/target/release/astroport-core .
+COPY --from=build /astroport-core/target/release/astroport-core .
 
 # set the startup command to run your binary
-CMD ["./astroport-core"]
-
-# For a production-ready (compressed) build:
-./scripts/build_release.sh
+# CMD ["./scripts/build_release.sh"]
 
 
 # Run each contract
-RUSTFLAGS='-C link-arg=-s' cargo wasm
-cp ../../target/wasm32-unknown-unknown/release/astroport_token.wasm .
-ls -l astroport_token.wasm
-sha256sum astroport_token.wasm
+# RUSTFLAGS='-C link-arg=-s' cargo wasm
+# cp ../../target/wasm32-unknown-unknown/release/astroport_token.wasm .
+# ls -l astroport_token.wasm
+# sha256sum astroport_token.wasm
