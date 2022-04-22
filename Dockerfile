@@ -27,7 +27,7 @@ FROM debian:buster-slim
 COPY --from=build /astroport-core/target/release/astroport-core .
 
 # set the startup command to run your binary
-# CMD ["./scripts/build_release.sh"]
+CMD ["./scripts/build_release.sh"]
 
 
 # Run each contract
