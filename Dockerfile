@@ -10,6 +10,10 @@ COPY ./Cargo.lock ./Cargo.lock
 COPY ./Cargo.toml ./Cargo.toml
 
 # this build step will cache your dependencies
+# rustup target add wasm32-unknown-unknown
+# cargo check --target wasm32-unknown-unknown
+# RUN cargo build --target wasm32-unknown-unknown
+
 RUN cargo build --release
 RUN rm src/*.rs
 
